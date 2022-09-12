@@ -1,2 +1,2 @@
 # WSNODEJS_market
-Trabajo curso IPAP_NODEJS
+Trabajo práctico curso IPAP_NODEJS!
