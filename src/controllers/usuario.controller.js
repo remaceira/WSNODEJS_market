@@ -15,10 +15,12 @@ module.exports = {
 
     agregar: async (req, res) => {
         try {
-            console.log('Prueba usuarios/agregar!')
+			var username = req.body.username || ''
+			
+            console.log('Prueba usuarios/agregar! Username: ' + username)
 
             res.json({
-                mensaje: 'Se ejecutó el POST usuarios/agregar!!!'
+                mensaje: 'Se ejecutó el POST usuarios/agregar!!! Username: ' + username
             })
         } 
         catch (error) {

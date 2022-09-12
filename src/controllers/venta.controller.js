@@ -15,10 +15,12 @@ module.exports = {
 
     agregar: async (req, res) => {
         try {
-            console.log('Prueba ventas/agregar! Importe total: ' + req.body.importeTotal)
+			var importeTotal = req.body.importeTotal || 0.0
+			
+            console.log('Prueba ventas/agregar! Importe total: $' + importeTotal)
 
             res.json({
-                mensaje: 'Se ejecutó el POST ventas/agregar!!! Importe total: $' + req.body.importeTotal
+                mensaje: 'Se ejecutó el POST ventas/agregar!!! Importe total: $' + importeTotal
             })
         } 
         catch (error) {

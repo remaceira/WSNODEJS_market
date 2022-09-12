@@ -15,10 +15,13 @@ module.exports = {
 
     agregar: async (req, res) => {
         try {
-            console.log('Prueba clientes/agregar!')
+			var apellido = req.body.apellido || '';
+			var nombre = req.body.nombre || '';
+			
+            console.log('Prueba clientes/agregar! Nombre y apellido: ' + nombre + ' ' + apellido)
 
             res.json({
-                mensaje: 'Se ejecutó el POST clientes/agregar!!!'
+                mensaje: 'Se ejecutó el POST clientes/agregar!!! Nombre y apellido: ' + nombre + ' ' + apellido
             })
         } 
         catch (error) {
