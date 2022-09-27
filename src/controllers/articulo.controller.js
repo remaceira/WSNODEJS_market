@@ -1,11 +1,22 @@
+const models = require('../database/models/index');
+
 module.exports = {
 
     listar: async (req, res) => {
         try {
             console.log('Prueba articulos/listar!')
 
+            const articulos = await models.articulo.findAll({
+                include: [{
+                    model: models.articulo
+                }]
+            })
+
             res.json({
-                mensaje: 'Se ejecutó el GET articulos/listar!!!'
+                success: true,
+                data: {
+                    articulos: articulos
+                }
             })
         } 
         catch (error) {
@@ -33,8 +44,17 @@ module.exports = {
         try {
             console.log('Prueba articulos/getInfo! idArticulo: ' + req.params.idArticulo)
 
+            const articulo = await models.articulo.findOne({
+                where: {
+                    id: req.params.idArticulo
+                }
+            })
+
             res.json({
-                mensaje: 'Se ejecutó el GET articulos/getInfo!!! idArticulo: ' + req.params.idArticulo
+                success: true,
+                data: {
+                    articulo: articulo
+                }
             })
         } 
         catch (error) {

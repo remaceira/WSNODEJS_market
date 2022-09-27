@@ -1,11 +1,18 @@
+const models = require('../database/models/index');
+
 module.exports = {
 
     listar: async (req, res) => {
         try {
             console.log('Prueba usuarios/listar!')
 
+            const usuarios = await models.usuario.findAll()
+
             res.json({
-                mensaje: 'Se ejecutó el GET usuarios/listar!!!'
+                success: true,
+                data: {
+                    usuarios: usuarios
+                }
             })
         } 
         catch (error) {
@@ -19,9 +26,15 @@ module.exports = {
 			
             console.log('Prueba usuarios/agregar! Username: ' + username)
 
+            const user = await models.usuario.create(req.body)
+
             res.json({
-                mensaje: 'Se ejecutó el POST usuarios/agregar!!! Username: ' + username
+                success: true,
+                data: {
+                    id: user.id
+                }
             })
+
         } 
         catch (error) {
             console.log('Error: ' + error)    
